@@ -6,7 +6,7 @@ import Link from "@mui/material/Link";
 import { Grid } from "@mui/material";
 import ButtonsContainer from "@/components/ButtonsContainer";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <Container sx={{ bgcolor: "red" }}>
       <Box
@@ -38,4 +38,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
