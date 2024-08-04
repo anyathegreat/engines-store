@@ -10,8 +10,8 @@ const pages = [
 const TheHeader = () => {
   return (
     <header>
-      <AppBar position="static" color="default">
-        <Container maxWidth="xl">
+      <AppBar position="static" color="default" sx={{ mb: 2 }}>
+        <Container maxWidth="lg">
           <Toolbar disableGutters variant="dense">
             <HeaderMobile pages={pages} />
             <HeaderDesktop pages={pages} />

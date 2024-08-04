@@ -1,40 +1,60 @@
-import NextLink from "next/link";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Link from "@mui/material/Link";
-import { Grid } from "@mui/material";
-import ButtonsContainer from "@/components/ButtonsContainer";
+import {
+  Grid,
+  Box,
+  FormControl,
+  InputLabel,
+  FilledInput,
+  InputAdornment,
+  Typography,
+  Link,
+  Stack,
+  Breadcrumbs,
+} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 const HomePage = () => {
+  const breadcrumbs = [
+    <Link underline="hover" key="1" color="inherit" href="/" sx={{ fontSize: "0.875rem" }}>
+      Главная
+    </Link>,
+    <Link underline="hover" key="2" color="inherit" href="/" sx={{ fontSize: "0.875rem" }}>
+      Каталог
+    </Link>,
+    <Typography key="3" color="text.primary" sx={{ fontSize: "0.875rem" }}>
+      Запчасти для двигателей
+    </Typography>,
+  ];
   return (
-    <Container sx={{ bgcolor: "red" }}>
-      <Box
-        sx={{
-          my: 4,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Grid container spacing={2}>
-          <Grid item xs={4}>
-            <Link href="/about" color="secondary" component={NextLink}>
-              Go to the about page
-            </Link>
-          </Grid>
-          <Grid item xs={8}>
-            <Typography variant="h4" component="h1">
-              Engines Store
-            </Typography>
-            <Box>
-              <ButtonsContainer />
-            </Box>
-          </Grid>
+    <>
+      <Box sx={{ mb: 2 }}>
+        <FormControl fullWidth variant="filled">
+          <InputLabel htmlFor="filled-adornment-amount">Поиск</InputLabel>
+          <FilledInput
+            id="filled-adornment-amount"
+            startAdornment={
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            }
+          />
+        </FormControl>
+      </Box>
+      <Box>
+        <Typography variant="h5" component="h1">
+          Каталог
+        </Typography>
+        <Stack spacing={2}>
+          <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
+            {breadcrumbs}
+          </Breadcrumbs>
+        </Stack>
+        <Grid container spacing={1}>
+          <Grid item xs={12} sm={4}></Grid>
+          <Grid item xs={12} sm={8}></Grid>
         </Grid>
       </Box>
-    </Container>
+    </>
   );
 };
 

@@ -1,9 +1,10 @@
+import theme from "@/theme";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import { Container } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
-import theme from "@/theme";
 import TheHeader from "@/components/TheHeader";
+import TheFooter from "@/components/TheFooter";
 // import "./globals.css";
 
 export const metadata = {
@@ -18,10 +19,12 @@ export default function RootLayout({ children }) {
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Container>
+            <Container disableGutters maxWidth="false">
               <TheHeader />
-              <main>{children}</main>
-              <footer></footer>
+              <Container component="main" maxWidth="lg" sx={{ minHeight: "100dvh" }}>
+                {children}
+              </Container>
+              <TheFooter />
             </Container>
           </ThemeProvider>
         </AppRouterCacheProvider>
