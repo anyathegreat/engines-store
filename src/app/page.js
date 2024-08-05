@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import PartCard from "@/components/PartCard";
 
 const HomePage = () => {
   const breadcrumbs = [
@@ -50,8 +51,16 @@ const HomePage = () => {
           </Breadcrumbs>
         </Stack>
         <Grid container spacing={1}>
-          <Grid item xs={12} sm={4}></Grid>
-          <Grid item xs={12} sm={8}></Grid>
+          <Grid item xs={12} sm={3}></Grid>
+          <Grid item xs={12} sm={9}>
+            <Stack useFlexGap direction="row" spacing={2} flexWrap="wrap">
+              <PartCard />
+              <PartCard />
+              <PartCard />
+              <PartCard />
+              <PartCard />
+            </Stack>
+          </Grid>
         </Grid>
       </Box>
     </>

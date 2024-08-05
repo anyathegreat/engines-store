@@ -16,7 +16,7 @@ import EmailIcon from "@mui/icons-material/Email";
 const TheFooter = () => {
   return (
     <footer>
-      <Container maxWidth="false" sx={{ bgcolor: "grey.800", color: "white" }}>
+      <Container maxWidth="false" sx={{ bgcolor: "grey.800", color: "white", mt: 4, pb: 4 }}>
         <Container maxWidth="lg">
           <Grid container spacing={1}>
             <Grid item xs={12} sm={12} md>
