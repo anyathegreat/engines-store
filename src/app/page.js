@@ -9,6 +9,7 @@ import {
   Link,
   Stack,
   Breadcrumbs,
+  Divider,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
@@ -50,6 +51,7 @@ const HomePage = () => {
             {breadcrumbs}
           </Breadcrumbs>
         </Stack>
+        <Divider sx={{ my: 2 }} />
         <Grid container spacing={1}>
           <Grid item xs={12} sm={3}></Grid>
           <Grid item xs={12} sm={9}>

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import {
   Box,
+  Button,
   Drawer,
   IconButton,
   Link,
@@ -13,6 +14,7 @@ import {
 } from "@mui/material";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MenuIcon from "@mui/icons-material/Menu";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const HeaderMobile = (props) => {
   const { pages } = props;
@@ -24,7 +26,9 @@ const HeaderMobile = (props) => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+    <Box
+      sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, justifyContent: "space-between", alignItems: "center" }}
+    >
       <IconButton
         size="large"
         aria-label="account of current user"
@@ -51,6 +55,9 @@ const HeaderMobile = (props) => {
           </List>
         </Box>
       </Drawer>
+      <Button size="small" variant="contained" startIcon={<ShoppingCartIcon />}>
+        Корзина
+      </Button>
     </Box>
   );
 };

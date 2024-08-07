@@ -1,11 +1,31 @@
+"use client";
 import { Box, Button, Card, CardActions, CardContent, Divider, IconButton, TextField, Typography } from "@mui/material";
+import { currencyFormatter } from "@/_helpers/formatter";
+import { useState } from "react";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-import { currencyFormatter } from "@/_helpers/formatter";
 import Image from "next/image";
 import testPic from "../../public/images/test.jpg";
 
 const PartCard = () => {
+  const [count, setCount] = useState(1);
+
+  function handlePlus() {
+    setCount((prevCount) => prevCount + 1);
+  }
+  function handleMinus() {
+    setCount((prevCount) => prevCount - 1);
+  }
+  function handleChangeCount(event) {
+    const value = parseInt(event.target.value.replaceAll(/[^\d]/g, ""));
+
+    if (Number.isNaN(value)) {
+      setCount(1);
+    } else {
+      setCount(value);
+    }
+  }
+
   return (
     <Card variant="outlined" sx={{ minWidth: 275, maxWidth: 275 }}>
       <CardContent sx={{ py: 1 }}>
@@ -31,11 +51,17 @@ const PartCard = () => {
       </CardContent>
       <CardActions sx={{ px: 2, justifyContent: "space-between" }}>
         <Box>
-          <IconButton sx={{ p: "8px" }}>
+          <IconButton sx={{ p: "8px" }} onClick={handleMinus}>
             <RemoveIcon fontSize="small" />
           </IconButton>
-          <TextField size="small" value="1" inputProps={{ style: { textAlign: "center" } }} sx={{ width: "40px" }} />
-          <IconButton sx={{ p: "8px" }}>
+          <TextField
+            size="small"
+            value={count}
+            onChange={handleChangeCount}
+            inputProps={{ style: { textAlign: "center", paddingLeft: 0, paddingRight: 0 } }}
+            sx={{ width: "40px" }}
+          />
+          <IconButton sx={{ p: "8px" }} onClick={handlePlus}>
             <AddIcon fontSize="small" />
           </IconButton>
         </Box>
