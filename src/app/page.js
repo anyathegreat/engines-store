@@ -10,9 +10,14 @@ import {
   Stack,
   Breadcrumbs,
   Divider,
+  Button,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PartCard from "@/components/PartCard";
 
 const HomePage = () => {
@@ -52,8 +57,53 @@ const HomePage = () => {
           </Breadcrumbs>
         </Stack>
         <Divider sx={{ my: 2 }} />
-        <Grid container spacing={1}>
-          <Grid item xs={12} sm={3}></Grid>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={3}>
+            <Typography variant="h6" component="h2">
+              Категории
+            </Typography>
+            <Accordion>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
+                Accordion 1
+              </AccordionSummary>
+              <AccordionDetails>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet
+                blandit leo lobortis eget.
+              </AccordionDetails>
+            </Accordion>
+            <Accordion>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
+                Accordion 1
+              </AccordionSummary>
+              <AccordionDetails>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet
+                blandit leo lobortis eget.
+              </AccordionDetails>
+            </Accordion>
+            <Accordion>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
+                Accordion 1
+              </AccordionSummary>
+              <AccordionDetails>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet
+                blandit leo lobortis eget.
+              </AccordionDetails>
+            </Accordion>
+            <Accordion>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
+                Accordion 1
+              </AccordionSummary>
+              <AccordionDetails>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet
+                blandit leo lobortis eget.
+              </AccordionDetails>
+            </Accordion>
+            <Divider sx={{ my: 2 }} />
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Button variant="outlined">Сбросить всё</Button>
+              <Button variant="contained">Применить</Button>
+            </Box>
+          </Grid>
           <Grid item xs={12} sm={9}>
             <Stack useFlexGap direction="row" spacing={2} flexWrap="wrap">
               <PartCard />

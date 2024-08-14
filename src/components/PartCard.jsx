@@ -2,28 +2,55 @@
 import { Box, Button, Card, CardActions, CardContent, Divider, IconButton, TextField, Typography } from "@mui/material";
 import { currencyFormatter } from "@/_helpers/formatter";
 import { useState } from "react";
+import { rusToEng } from "@/_helpers";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import Image from "next/image";
 import testPic from "../../public/images/test.jpg";
+import NextLink from "next/link";
 
 const PartCard = () => {
   const [count, setCount] = useState(1);
+  const [inputValue, setInputValue] = useState("1");
 
+  function updateValue(value) {
+    setCount(value);
+    setInputValue(`${value}`);
+  }
   function handlePlus() {
-    setCount((prevCount) => prevCount + 1);
+    if (count >= 9999) return;
+    updateValue(count + 1);
   }
   function handleMinus() {
-    setCount((prevCount) => prevCount - 1);
+    if (count <= 1) return;
+    updateValue(count - 1);
   }
-  function handleChangeCount(event) {
-    const value = parseInt(event.target.value.replaceAll(/[^\d]/g, ""));
+  function handleBlur(e) {
+    const value = parseInt(inputValue.replaceAll(/[^\d-]/g), "");
 
     if (Number.isNaN(value)) {
-      setCount(1);
+      setInputValue(`${count}`);
     } else {
-      setCount(value);
+      if (value <= 1) {
+        updateValue(1);
+        return;
+      }
+
+      if (value >= 9999) {
+        updateValue(9999);
+        return;
+      }
+
+      updateValue(value);
     }
+  }
+
+  function handleFocus() {
+    setInputValue("");
+  }
+
+  function handleChange(e) {
+    setInputValue(e.target.value);
   }
 
   return (
@@ -32,7 +59,14 @@ const PartCard = () => {
         <Box maxWidth="250px" minWidth="250px">
           <Image src={testPic} alt="" width={250} />
         </Box>
-        <Typography variant="body1" component="div" lineHeight="1.2rem" color="secondary.main" sx={{ mb: 1 }}>
+        <Typography
+          variant="body1"
+          component={NextLink}
+          href={`/catalog/${rusToEng("Актуатор (привод управления топливом, дозатор)")}`}
+          lineHeight="1.2rem"
+          color="secondary.main"
+          sx={{ mb: 1 }}
+        >
           <b>{`Актуатор (привод управления топливом, дозатор)`}</b>
         </Typography>
         <Typography
@@ -56,8 +90,11 @@ const PartCard = () => {
           </IconButton>
           <TextField
             size="small"
-            value={count}
-            onChange={handleChangeCount}
+            value={inputValue}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
+            onKeyDown={(e) => e.key === "Enter" && e.target.blur()}
             inputProps={{ style: { textAlign: "center", paddingLeft: 0, paddingRight: 0 } }}
             sx={{ width: "40px" }}
           />
